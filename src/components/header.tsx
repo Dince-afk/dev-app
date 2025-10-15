@@ -1,7 +1,4 @@
 "use client";
-// import { ThemeSwitcher } from "@repo/shared/theme-switcher";
-// import LanguageSwitcher from "./language-switcher";
-// import Logo from "./logo";
 
 import { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
@@ -34,7 +31,7 @@ export default function Header({
       className={cn(
         "bg-background sticky top-0 z-50 px-4 py-1 sm:px-6 lg:px-8",
         className,
-        scrolled && "border-b",
+        scrolled && "border-b"
       )}
     >
       {children}

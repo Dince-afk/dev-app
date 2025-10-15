@@ -15,7 +15,7 @@ export default function NavigationBar() {
         href="/"
         className={cn(
           "hover:text-foreground",
-          pathname === "/" && "text-foreground",
+          pathname === "/" && "text-foreground"
         )}
       >
         Home
@@ -24,7 +24,7 @@ export default function NavigationBar() {
         href="/#test"
         className={cn(
           "hover:text-foreground",
-          pathname === "/#test" && "text-foreground",
+          pathname === "/#test" && "text-foreground"
         )}
       >
         Section
@@ -33,19 +33,10 @@ export default function NavigationBar() {
         href="/test"
         className={cn(
           "hover:text-foreground",
-          pathname === "/test" && "text-foreground",
+          pathname === "/test" && "text-foreground"
         )}
       >
         Test Page
-      </Link>
-      <Link
-        href="https://google.com"
-        className={cn(
-          "hover:text-foreground",
-          pathname === "" && "text-foreground",
-        )}
-      >
-        External
       </Link>
     </nav>
   );

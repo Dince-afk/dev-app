@@ -46,6 +46,7 @@ export default function RootLayout({
             </div>
           </Header>
           <main className="py-16">{children}</main>
+          <footer>Footer</footer>
           <ConsentPopup />
         </ThemeProvider>
       </body>
