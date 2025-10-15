@@ -1,17 +1,18 @@
-// storage-adapter-import-placeholder
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { seoPlugin } from "@payloadcms/plugin-seo";
-import { en } from "@payloadcms/translations/languages/en";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { de } from "@payloadcms/translations/languages/de";
+import { en } from "@payloadcms/translations/languages/en";
 import path from "path";
 import { buildConfig } from "payload";
-import { fileURLToPath } from "url";
 import sharp from "sharp";
+import { fileURLToPath } from "url";
 
-import { Users } from "./collections/Users";
+import { Images } from "./collections/Images";
 import { Media } from "./collections/Media";
+import { Users } from "./collections/Users";
 import { Impressum } from "./globals/Impressum";
 import { Privacy } from "./globals/Privacy";
 
@@ -19,19 +20,19 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
-  i18n: { supportedLanguages: { de, en } }, // the language displayed in all of the /admin page
-  localization: { defaultLocale: "de", locales: ["de", "en"] }, // the localization our data can be in
+  i18n: { supportedLanguages: { de, en } }, // The language displayed in all of the /admin page
+  localization: { defaultLocale: "de", locales: ["de", "en"] }, // The localization our data can be in
   admin: {
     meta: {
-      titleSuffix: " - Admin", // a suffix behind every path and sub path under /admin
+      titleSuffix: " - Admin", // A suffix behind every path and sub path under /admin
     },
-    dateFormat: "HH:mm:ss, do MMM yyy", // anytime dates will be shown in the /admin site it will use this format
+    dateFormat: "HH:mm:ss, do MMM yyy", // Anytime dates will be shown in the /admin site it will use this format
 
-    user: Users.slug, // define the main user collection
+    user: Users.slug, // Define the main user collection
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    // autofill credentials in dev env
+    // Autofill credentials in dev env
     autoLogin:
       process.env.NODE_ENV === "development"
         ? {
@@ -40,35 +41,57 @@ export default buildConfig({
             prefillOnly: true,
           }
         : false,
-    avatar: "default", // nicer looking avatar icon
+    avatar: "default", // Nicer looking avatar icon
+
+    // Add custom components to /admin sites
     components: {
       beforeDashboard: ["@/components/admin/before-dashboard"],
       actions: ["@/components/admin/actions"],
-      // afterDashboard: ["@/components/admin/after-dashboard"],
     },
   },
 
-  collections: [Users, Media],
+  collections: [Users, Media, Images],
   globals: [Impressum, Privacy],
-  editor: lexicalEditor(),
+
+  editor: lexicalEditor(), // Choose your editor when modifying rich text data content
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
+
+  // Setup db
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || "",
     },
   }),
+
   sharp,
+
+  // Add extra plugins from payloadcms or community built
   plugins: [
     payloadCloudPlugin(),
-    // storage-adapter-placeholder
+    vercelBlobStorage({
+      enabled: true, // Optional, defaults to true
+      // Specify which collections should use Vercel Blob
+      collections: {
+        // manuals: {
+        //   prefix: "manual-battery-charger/manuals",
+        // },
+        images: {
+          prefix: "dev-app/images", // Creates nice subfolders in blob storage for the images collection
+        },
+      },
+      clientUploads: true, // Critical to circumvent upload file size limits on vercel (4 mb?)
+
+      token: process.env.BLOB_READ_WRITE_TOKEN, // Token provided by Vercel once Blob storage is added to your Vercel project
+    }),
+
     seoPlugin({
       tabbedUI: true,
       collections: [],
       globals: ["impressum", "privacy"],
-      uploadsCollection: "media",
+      uploadsCollection: "images",
       generateURL: ({ locale, globalSlug }) =>
         `${process.env.NEXT_PUBLIC_SERVER_URL}/${locale}/${globalSlug}`,
       // generateTitle: ({ doc }) =>

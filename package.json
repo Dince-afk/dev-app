@@ -7,7 +7,8 @@
     "check-types": "tsc --noEmit --incremental false",
     "start": "next start",
     "lint": "eslint",
-    "gen": "NODE_OPTIONS='--import tsx' payload generate:importmap"
+    "payload:map": "NODE_OPTIONS='--import tsx' payload generate:importmap",
+    "payload:types": "NODE_OPTIONS='--import tsx' payload generate:types"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -17,6 +18,7 @@
     "@payloadcms/payload-cloud": "^3.59.1",
     "@payloadcms/plugin-seo": "^3.59.1",
     "@payloadcms/richtext-lexical": "^3.59.1",
+    "@payloadcms/storage-vercel-blob": "^3.59.1",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
