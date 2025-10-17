@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
+import { ConsentPopup } from "@/components/consent/consent-popup";
+import Header from "@/components/header";
+import Logo from "@/components/logo";
 import NavigationBar from "@/components/navigation-menu";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import Header from "@/components/header";
-import { ThemeSwitcher } from "@/components/theme/theme-switcher";
-import { ConsentPopup } from "@/components/consent/consent-popup";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
+import "./globals.css";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,14 +40,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header>
-            <div className="flex items-center justify-between">
-              <NavigationBar />
-              <ThemeSwitcher className="m-2" />
+          <Header className="flex items-center justify-between py-3 px-4 sm:px-8">
+            <div className="flex items-center gap-12">
+              <Link href="/">
+                <Logo className="stroke-amber-700 stroke-" />
+              </Link>
+              <NavigationBar className="" />
             </div>
           </Header>
-          <main className="py-16">{children}</main>
-          <footer>Footer</footer>
+          <main className="py-16 min-h-screen">{children}</main>
+          <Footer />
           <ConsentPopup />
         </ThemeProvider>
       </body>

@@ -2,13 +2,17 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { HTMLProps } from "react";
 
-export default function NavigationBar() {
+export default function NavigationBar(props: HTMLProps<HTMLElement>) {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <nav
-      className="text-muted-foreground hidden gap-6 text-sm font-medium sm:flex"
+      {...props}
+      className={cn(
+        "text-muted-foreground hidden gap-8 text-sm font-medium sm:flex",
+        props.className
+      )}
       aria-label="Main navigation"
     >
       <Link

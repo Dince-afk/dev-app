@@ -1,15 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type HTMLProps, useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 
-export default function Header({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
+export default function Header(props: HTMLProps<HTMLElement>) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,13 +22,14 @@ export default function Header({
 
   return (
     <header
+      {...props}
       className={cn(
-        "bg-background sticky top-0 z-50 px-4 py-1 sm:px-6 lg:px-8",
-        className,
-        scrolled && "border-b"
+        "bg-background sticky top-0 z-50 py-1",
+        scrolled && "border-b",
+        props.className
       )}
     >
-      {children}
+      {props.children}
     </header>
   );
 }
