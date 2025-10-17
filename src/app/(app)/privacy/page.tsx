@@ -46,7 +46,7 @@ export default async function Page(
     //   params,
     // }: {
     //   params: Promise<{ lang: string }>;
-  }
+  },
 ) {
   // const { isEnabled } = await draftMode();
   // let { lang } = await params;

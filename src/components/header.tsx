@@ -26,7 +26,7 @@ export default function Header(props: HTMLProps<HTMLElement>) {
       className={cn(
         "bg-background sticky top-0 z-50 py-1",
         scrolled && "border-b",
-        props.className
+        props.className,
       )}
     >
       {props.children}

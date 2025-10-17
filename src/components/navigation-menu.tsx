@@ -11,7 +11,7 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
       {...props}
       className={cn(
         "text-muted-foreground hidden gap-8 text-sm font-medium sm:flex",
-        props.className
+        props.className,
       )}
       aria-label="Main navigation"
     >
@@ -19,7 +19,7 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
         href="/"
         className={cn(
           "hover:text-foreground",
-          pathname === "/" && "text-foreground"
+          pathname === "/" && "text-foreground",
         )}
       >
         Home
@@ -28,7 +28,7 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
         href="/#test"
         className={cn(
           "hover:text-foreground",
-          pathname === "/#test" && "text-foreground"
+          pathname === "/#test" && "text-foreground",
         )}
       >
         Section
@@ -37,7 +37,7 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
         href="/test"
         className={cn(
           "hover:text-foreground",
-          pathname === "/test" && "text-foreground"
+          pathname === "/test" && "text-foreground",
         )}
       >
         Test Page

@@ -40,15 +40,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header className="flex items-center justify-between py-3 px-4 sm:px-8">
+          <Header className="flex items-center justify-between px-4 py-3 sm:px-8">
             <div className="flex items-center gap-12">
               <Link href="/">
-                <Logo className="stroke-amber-700 stroke-" />
+                <Logo className="stroke- stroke-amber-700" />
               </Link>
               <NavigationBar className="" />
             </div>
           </Header>
-          <main className="py-16 min-h-screen">{children}</main>
+          <main className="min-h-screen py-16">{children}</main>
           <Footer />
           <ConsentPopup />
         </ThemeProvider>
