@@ -43,7 +43,7 @@ export default function RootLayout({
           <Header className="flex items-center justify-between px-4 py-3 sm:px-8">
             <div className="flex items-center gap-12">
               <Link href="/">
-                <Logo className="stroke- stroke-amber-700" />
+                <Logo className="h-8" />
               </Link>
               <NavigationBar className="" />
             </div>
