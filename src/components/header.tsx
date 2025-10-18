@@ -27,8 +27,8 @@ export default function Header(props: HTMLProps<HTMLElement>) {
     <header
       {...props}
       className={cn(
-        "bg-background sticky top-0 z-50 flex items-center justify-between px-4 py-3 sm:px-8",
-        scrolled && "border-b",
+        "bg-background sticky top-0 z-50 flex items-center justify-between border-b border-b-transparent px-4 py-3 sm:px-8",
+        scrolled && "border-b-border",
         props.className,
       )}
     >
