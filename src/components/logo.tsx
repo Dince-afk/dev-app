@@ -3,7 +3,7 @@ import { SVGProps } from "react";
 
 export default function Logo(props: SVGProps<SVGSVGElement>) {
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div className="flex justify-center gap-4">
       <svg
         {...props}
         viewBox="0 0 16 16"

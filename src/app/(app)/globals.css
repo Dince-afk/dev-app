@@ -121,3 +121,31 @@
     @apply bg-background text-foreground;
   }
 }
+
+.show-on-scroll {
+  animation: show-on-scroll ease-in-out;
+  animation-timeline: scroll();
+}
+
+@keyframes show-on-scroll {
+  from {
+    border-bottom-color: transparent;
+  }
+  1%, 100% {
+    border-bottom-color: var(--border);
+  }
+}
+
+/* @keyframes test {
+  0%,100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(1300);
+  }
+}
+
+.test-animation {
+  animation: test ease-in-out;
+  animation-timeline: scroll();
+} */
