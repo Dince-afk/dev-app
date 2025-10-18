@@ -1,11 +1,8 @@
 import { ConsentPopup } from "@/components/consent/consent-popup";
 import Header from "@/components/header";
-import Logo from "@/components/logo";
-import NavigationBar from "@/components/navigation-menu";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 import Footer from "@/components/footer";
 
@@ -40,14 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header className="flex items-center justify-between px-4 py-3 sm:px-8">
-            <div className="flex items-center gap-12">
-              <Link href="/">
-                <Logo className="h-8" />
-              </Link>
-              <NavigationBar className="" />
-            </div>
-          </Header>
+          <Header />
           <main className="min-h-screen py-16">{children}</main>
           <Footer />
           <ConsentPopup />

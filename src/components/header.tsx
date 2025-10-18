@@ -2,6 +2,9 @@
 
 import { type HTMLProps, useEffect, useState } from "react";
 import { cn } from "../lib/utils";
+import Link from "next/link";
+import Logo from "./logo";
+import NavigationBar from "./navigation-menu";
 
 export default function Header(props: HTMLProps<HTMLElement>) {
   const [scrolled, setScrolled] = useState(false);
@@ -24,12 +27,17 @@ export default function Header(props: HTMLProps<HTMLElement>) {
     <header
       {...props}
       className={cn(
-        "bg-background sticky top-0 z-50 py-1",
+        "bg-background sticky top-0 z-50 flex items-center justify-between px-4 py-3 sm:px-8",
         scrolled && "border-b",
         props.className,
       )}
     >
-      {props.children}
+      <div className="flex items-center gap-12">
+        <Link href="/">
+          <Logo className="h-8" />
+        </Link>
+        <NavigationBar className="" />
+      </div>
     </header>
   );
 }
