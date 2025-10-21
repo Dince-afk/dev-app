@@ -16,16 +16,6 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
       aria-label="Main navigation"
     >
       <Link
-        href="/#test"
-        className={cn(
-          "hover:text-foreground",
-          pathname === "/#test" && "text-foreground",
-        )}
-      >
-        Section
-      </Link>
-
-      <Link
         href="/components"
         className={cn(
           "hover:text-foreground",
