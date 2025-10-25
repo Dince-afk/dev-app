@@ -2,15 +2,51 @@
 @import "tw-animate-css";
 @source "../../../../packages/shared/src";
 
-@custom-variant dark (&:is(.dark *)); /* Defines a custom dark: variant and when that dark: variant is true. It's true if its any element (*) with a parent that has the .dark class on it */ 
+/* 
+  Defines a custom Tailwind variant named `dark`. 
+  The rule `(&:is(.dark *))` tells Tailwind that the `dark:` prefix should apply 
+  when the styled element (`&`) is any descendant (`*`) of a parent with the `.dark` class.
+*/
+@custom-variant dark (&:is(.dark *));
 
 
-/* Foreground colors are primarily used for text color. Without the foreground suffix colors are mostly used in bg colors or other parts of special elements */
-@theme inline { /* @theme inline = tailwind custom @rule used to make available all the custom theme classes */
-  --color-background: var(--background); /* Default background-color starting and descending from body */
-  --color-foreground: var(--foreground); /* Default text-color starting and descending from body */ 
-  --font-sans: var(--font-geist-sans); /* Overwrites the --font-sans variable defined in tailwinds index.css (and there also set to be the default font) with the --font-geist-sans created in root layout.tsx by nextjs */
+@theme inline {
+  /* Surfaces */
+  --color-background: var(--background); /* body (bg) */
+  --color-foreground: var(--foreground); /* body (text) */
+  --color-card: var(--card); /* Card (bg), Table (bg) */
+  --color-card-foreground: var(--card-foreground); /* Card (text), Table (text) */
+  --color-popover: var(--popover); /* DropdownMenu (bg), Tooltip (bg), Select (bg) */
+  --color-popover-foreground: var(--popover-foreground); /* DropdownMenu (text), Tooltip (text), Select (text) */
+
+  /* Interactive: Primary Action */
+  --color-primary: var(--primary); /* Button-Default (bg), Switch (active bg), Checkbox (checked bg), Slider/Progress (fill) */
+  --color-primary-foreground: var(--primary-foreground); /* Button-Default (text) */
+  
+  /* Interactive: Secondary Action */
+  --color-secondary: var(--secondary); /* Button-Secondary (bg), Input (bg), Select (trigger bg) */
+  --color-secondary-foreground: var(--secondary-foreground); /* Button-Secondary (text), Input (text), Select (trigger text) */
+
+  /* Interactive: Hover/Focus/Selected State */
+  --color-accent: var(--accent); /* DropdownMenu (hovered item bg), Select (hovered item bg), Tabs (active tab bg), Calendar (selected date bg) */
+  --color-accent-foreground: var(--accent-foreground); /* DropdownMenu (hovered item text), Select (hovered item text), Tabs (active tab text) */
+  
+  /* Interactive: Destructive Action */
+  --color-destructive: var(--destructive); /* Button-Destructive (bg), Alert-Destructive (icon/border color) */
+
+  /* Informational: De-emphasized Content */
+  --color-muted: var(--muted); /* Badge-Outline (bg), Skeleton (bg) */
+  --color-muted-foreground: var(--muted-foreground); /* Input (placeholder), Form (description text), Disabled (text), Calendar (date) */
+
+  /* Borders & Outlines */
+  --color-border: var(--border); /* Card (border), Button-Outline (border), Table (border) */
+  --color-input: var(--input); /* Input (border), Textarea (border), Select (border) */
+  --color-ring: var(--ring); /* Focus Ring (all interactive elements) */
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -24,29 +60,15 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring); /* The default color added to each element's outline color */
-  --color-input: var(--input); /* Used in various forms and places: bg color of inputs, or border colors, all with /** opaciticy modifications  */
-  --color-border: var(--border); /* The default color added to each element's border-color property */
-  --color-destructive: var(--destructive); /* Used in text and bg colors */
-  --color-accent-foreground: var(--accent-foreground); /* Important!: Used in text colors of most components. Especially in their default or primary variants. */
-  --color-accent: var(--accent); /* Important!: Used in bg colors of most components. Especially in their default or primary variants. */
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-:root { /* Defines the custom properties (colors) for the default/light theme  */
+:root { 
+  /* Light mode colors */
   --radius: 0.625rem;
   --background: oklch(100% 0.00011 271.152);
   --foreground: oklch(0.145 0 0);
@@ -81,7 +103,8 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark { /* Defines the same custom properties (colors) but for the dark theme. This .dark class will be added to :root/html element and overwrite the :root/default/light mode variable color values with dark alternatives  */
+.dark {
+    /* Dark mode colors */
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
