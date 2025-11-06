@@ -38,7 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="min-h-screen py-16">{children}</main>
+          <main className="min-h-screen">{children}</main>
           <Footer />
           <ConsentPopup />
         </ThemeProvider>

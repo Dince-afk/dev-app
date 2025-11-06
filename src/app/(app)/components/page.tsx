@@ -19,7 +19,7 @@ import { Calendar22 } from "@/components/demos/date-picker-demo";
 
 export default function Page() {
   return (
-    <div className="flex flex-col items-center gap-10">
+    <div className="flex flex-col items-center gap-10 py-16">
       <div className="flex gap-4">
         <Button>Default</Button>
         <Button variant="secondary">Secondary</Button>

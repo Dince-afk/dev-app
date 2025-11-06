@@ -3,7 +3,7 @@ import { SVGProps } from "react";
 
 export default function Logo(props: SVGProps<SVGSVGElement>) {
   return (
-    <div className="flex justify-center gap-4">
+    <div className="flex items-end gap-4">
       <svg
         {...props}
         viewBox="0 0 16 16"
@@ -21,5 +21,5 @@ export default function Logo(props: SVGProps<SVGSVGElement>) {
 }
 
 function LogoTitle() {
-  return <h1 className="text-lg font-bold">Dev App</h1>;
+  return <h1 className="text-lg font-bold">DEV APP</h1>;
 }

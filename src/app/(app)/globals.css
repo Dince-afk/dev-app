@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@source "../../../../packages/shared/src";
 
 /* 
   Defines a custom Tailwind variant named `dark`. 
@@ -83,7 +82,7 @@
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
-  --accent-foreground: var(--color-blue-300);
+  --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
