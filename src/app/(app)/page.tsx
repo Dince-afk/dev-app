@@ -3,7 +3,7 @@ export default function Page() {
     <div className="space-y-10 px-4 py-16">
       <section className="mx-auto max-w-prose">
         <h1 className="pb-4 text-xl font-bold">Home</h1>
-        <p>
+        <p className="font-light">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
           ea odit neque atque ducimus voluptatum tenetur ipsa magni. Quas sed
           esse dolorem quasi, voluptatem facilis at, iusto molestiae optio
@@ -20,7 +20,7 @@ export default function Page() {
       </section>
       <section id="test" className="mx-auto max-w-prose pt-[10vh]">
         <h1 className="pb-4 text-xl font-bold">Section</h1>
-        <p>
+        <p className="font-light">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
           ea odit neque atque ducimus voluptatum tenetur ipsa magni. Quas sed
           esse dolorem quasi, voluptatem facilis at, iusto molestiae optio

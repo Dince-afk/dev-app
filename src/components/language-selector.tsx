@@ -41,7 +41,6 @@ export default function LanguageSelector({
       onValueChange={(newLang) => handleLanguageChange(newLang)}
     >
       <SelectTrigger
-        className=""
         aria-label={currentLang === "de" ? "Sprache ändern" : "Switch language"}
       >
         <SelectValue>
@@ -51,7 +50,7 @@ export default function LanguageSelector({
             svg
             alt={`${currentLangData?.countryIsoCode} country flag icon`}
           />
-          <span className="text-xs">
+          <span className="">
             {currentLangData?.languageNativeName || "English"}
           </span>
         </SelectValue>
@@ -68,9 +67,7 @@ export default function LanguageSelector({
               className="mr-1 aspect-square grayscale-25"
               aria-hidden="true"
             />
-            <span className="text-xs">
-              {lang.languageNativeName || "English"}
-            </span>
+            <span className="">{lang.languageNativeName || "English"}</span>
           </SelectItem>
         ))}
       </SelectContent>
