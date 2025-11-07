@@ -4,8 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HTMLProps, useState } from "react";
 import { ThemeSwitcher } from "./theme/theme-switcher";
+import LanguageSelector from "./language-selector";
+import { Separator } from "./ui/separator";
 
 const navigationLinks = [
+  { name: "Home", href: "/" },
   { name: "Components", href: "/components" },
   { name: "Test Page", href: "/test" },
 ];
@@ -17,10 +20,7 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
   return (
     <nav
       {...props}
-      className={cn(
-        "text-muted-foreground text-sm font-medium",
-        props.className,
-      )}
+      className={cn("", props.className)}
       aria-label="Main navigation"
     >
       {/* Hamburger */}
@@ -44,12 +44,14 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
 
       {/* Mobile navigation menu is opened */}
       {isOpen && (
-        <div className="bg-background absolute top-0 left-0 flex min-h-screen w-full flex-col gap-2 px-6 pt-16">
+        <div className="bg-background absolute top-0 left-0 flex min-h-screen w-full flex-col gap-2 px-6 pt-20">
+          <Separator />
           {navigationLinks.map((link) => {
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={() => setIsOpen(false)}
                 className={cn(
                   "hover:text-foreground hover:bg-accent text-muted-foreground rounded-md px-3 py-3",
                   pathname === link.href && "text-foreground",
@@ -59,9 +61,27 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
               </Link>
             );
           })}
-          <div className="hover:text-foreground flex items-center justify-between px-3 py-3">
+          <Separator />
+          <div className="hover:text-foreground text-muted-foreground flex items-center justify-between py-3 pl-3">
             <span>Theme</span>
             <ThemeSwitcher />
+          </div>
+          <div className="hover:text-foreground text-muted-foreground flex items-center justify-between py-3 pl-3">
+            <span>Language</span>
+            <LanguageSelector
+              languageData={[
+                {
+                  countryIsoCode: "DE",
+                  languageIsoCode: "de",
+                  languageNativeName: "Deutsch",
+                },
+                {
+                  countryIsoCode: "BA",
+                  languageIsoCode: "ba",
+                  languageNativeName: "Bosanski",
+                },
+              ]}
+            />
           </div>
         </div>
       )}

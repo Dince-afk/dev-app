@@ -3,7 +3,6 @@ import { cn } from "../lib/utils";
 import Link from "next/link";
 import Logo from "./logo";
 import NavigationBar from "./navigation-bar";
-import LanguageSelector from "./language-selector";
 
 export default function Header(props: HTMLProps<HTMLElement>) {
   return (
@@ -20,22 +19,7 @@ export default function Header(props: HTMLProps<HTMLElement>) {
           <Logo className="h-8" />
         </Link>
         <NavigationBar />
-        <div className="hidden md:block">
-          <LanguageSelector
-            languageData={[
-              {
-                countryIsoCode: "DE",
-                languageIsoCode: "de",
-                languageNativeName: "Deutsch",
-              },
-              {
-                countryIsoCode: "BA",
-                languageIsoCode: "ba",
-                languageNativeName: "Bosanski",
-              },
-            ]}
-          />
-        </div>
+        <div className="hidden md:block"></div>
       </div>
     </header>
   );

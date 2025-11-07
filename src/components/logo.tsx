@@ -1,11 +1,17 @@
 import { cn } from "@/lib/utils";
-import { SVGProps } from "react";
+import { HTMLProps } from "react";
 
-export default function Logo(props: SVGProps<SVGSVGElement>) {
+export default function Logo(props: HTMLProps<HTMLDivElement>) {
   return (
-    <div className="flex items-end gap-4">
+    <div
+      {...props}
+      className={cn(
+        "flex items-end gap-4",
+        false && "relative z-10",
+        props.className,
+      )}
+    >
       <svg
-        {...props}
         viewBox="0 0 16 16"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
