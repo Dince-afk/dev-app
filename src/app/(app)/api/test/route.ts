@@ -1,4 +1,4 @@
-import { getConsentCookieServer } from "@/components/consent/utils.server";
+import { getConsentCookieServer } from "@/features/consent/utils/utils.server";
 import { NextResponse } from "next/server";
 
 export async function GET() {

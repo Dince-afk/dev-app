@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from "../../components/ui/select";
 import { usePathname, useRouter } from "next/navigation";
 
 type Language = {

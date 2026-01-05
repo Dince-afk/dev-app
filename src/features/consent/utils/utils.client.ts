@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { CONSENT_COOKIE_NAME } from "./config";
+import { CONSENT_COOKIE_NAME } from "../config";
 
 export function getConsentCookieClient() {
   const cookieStr = Cookies.get(CONSENT_COOKIE_NAME);

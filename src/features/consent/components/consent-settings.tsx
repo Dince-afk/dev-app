@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { ConsentViewState, SupportedLanguages, t } from "./config";
-import { setConsentCookie } from "./utils.client";
+import { ConsentViewState, SupportedLanguages, t } from "../config";
+import { setConsentCookie } from "../utils/utils.client";
 import { AccordionItem } from "./accordion-item";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 

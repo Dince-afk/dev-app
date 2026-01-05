@@ -2,10 +2,10 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ConsentViewState, SupportedLanguages } from "./config";
+import { ConsentViewState, SupportedLanguages } from "../config";
 import { ConsentSettings } from "./consent-settings";
 import { SmallPopup } from "./small-popup";
-import { getConsentCookieClient } from "./utils.client";
+import { getConsentCookieClient } from "../utils/utils.client";
 
 /**
  * A client component which checks if the consent cookie is set. If not, it will render the consent popup.

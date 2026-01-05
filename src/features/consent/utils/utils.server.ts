@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { CONSENT_COOKIE_NAME } from "./config";
+import { CONSENT_COOKIE_NAME } from "../config";
 
 export async function getConsentCookieServer() {
   const rawConsentStr = (await cookies()).get(CONSENT_COOKIE_NAME)?.value;

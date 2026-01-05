@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HTMLProps, useState } from "react";
-import { ThemeSwitcher } from "./theme/theme-switcher";
+import { ThemeSwitcher } from "../../components/theme/theme-switcher";
 import LanguageSelector from "./language-selector";
-import { Separator } from "./ui/separator";
+import { Separator } from "../../components/ui/separator";
 
 const navigationLinks = [
   { name: "Home", href: "/" },
@@ -20,7 +20,7 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
   return (
     <nav
       {...props}
-      className={cn("", props.className)}
+      className={cn("flex justify-between md:grow", props.className)}
       aria-label="Main navigation"
     >
       {/* Hamburger */}
@@ -87,21 +87,38 @@ export default function NavigationBar(props: HTMLProps<HTMLElement>) {
       )}
 
       {/* Desktop */}
-      <div className="hidden gap-4 md:flex">
-        {navigationLinks.map((link) => {
-          return (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "hover:text-foreground",
-                pathname === link.href && "text-foreground",
-              )}
-            >
-              {link.name}
-            </Link>
-          );
-        })}
+      <div className="hidden justify-between md:flex">
+        <div className="flex gap-5">
+          {navigationLinks.map((link) => {
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "hover:text-foreground text-muted-foreground text-sm",
+                  pathname === link.href && "text-foreground",
+                )}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </div>
+
+        <LanguageSelector
+          languageData={[
+            {
+              countryIsoCode: "DE",
+              languageIsoCode: "de",
+              languageNativeName: "Deutsch",
+            },
+            {
+              countryIsoCode: "BA",
+              languageIsoCode: "ba",
+              languageNativeName: "Bosanski",
+            },
+          ]}
+        />
       </div>
     </nav>
   );

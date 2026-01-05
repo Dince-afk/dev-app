@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ConsentViewState, SupportedLanguages, t } from "./config";
-import { setConsentCookie } from "./utils.client";
+import { ConsentViewState, SupportedLanguages, t } from "../config";
+import { setConsentCookie } from "../utils/utils.client";
 
 export function SmallPopup({
   lang,
