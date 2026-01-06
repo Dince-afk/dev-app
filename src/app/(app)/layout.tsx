@@ -48,6 +48,11 @@ export default function RootLayout({
           src="https://umami.admin-gateway.dev/script.js"
           data-website-id="7a5a3db4-cb0f-4aa6-a464-1561e1a6708e"
         ></Script>
+        <Script
+          defer
+          data-domain="dev.admin-gateway.dev"
+          src="https://plausible.admin-gateway.dev/js/script.js"
+        ></Script>
       </body>
     </html>
   );
