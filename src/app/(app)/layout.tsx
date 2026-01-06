@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/layouts/main/footer";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,11 @@ export default function RootLayout({
           <Footer />
           <ConsentPopup />
         </ThemeProvider>
+        <Script
+          defer
+          src="https://umami.admin-gateway.dev/script.js"
+          data-website-id="7a5a3db4-cb0f-4aa6-a464-1561e1a6708e"
+        ></Script>
       </body>
     </html>
   );
