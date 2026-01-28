@@ -1,40 +1,70 @@
-export default function Page() {
+import React from "react";
+import { getPayload } from "payload";
+import config from "@payload-config";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
+// // import { RefreshRouteOnSave } from "@/components/refresh-route-on-save";
+// import { draftMode } from "next/headers";
+
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: Promise<{ lang: string }>;
+// }) {
+//   let { lang } = await params;
+//   if (!lang || lang !== "de") lang = "en"; // default to en for all other lang params (hr, fr, es, ...)
+//   const payload = await getPayload({ config });
+//   const t = await payload.findGlobal({
+//     slug: "impressum",
+//     locale: (lang as "en") || "de",
+//   });
+
+//   return {
+//     title: t.meta?.title,
+//     description: t.meta?.description,
+//   };
+// }
+
+// export async function generateStaticParams() {
+//   const payload = await getPayload({ config });
+//   const t = await payload.find({
+//     collection: "translations",
+//     select: { languageIsoCode: true },
+//     pagination: false,
+//   });
+//   // console.log(
+//   //   "generateStaticParams()",
+//   //   t.docs.map((langData) => ({ lang: langData.languageIsoCode })),
+//   // );
+//   return t.docs.map((langData) => ({ lang: langData.languageIsoCode }));
+//   // const languageData = await fetchLanguages();
+//   // return languageData.map((lang) => ({ lang: lang.languageIsoCode }));
+// }
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  // const { isEnabled } = await draftMode();
+  let { lang } = await params;
+  if (!lang || lang !== "de") lang = "en"; // default to en for all other lang params (hr, fr, es, ...)
+  const payload = await getPayload({ config });
+  const t = await payload.findGlobal({
+    slug: "homepage",
+    locale: (lang as "de") || "en",
+    // draft: isEnabled,
+  });
+  const content = t.content as SerializedEditorState;
+
   return (
-    <div className="space-y-10 px-4 py-16">
-      <section className="mx-auto max-w-prose">
-        <h1 className="pb-4 text-xl font-bold">Home!</h1>
-        <p className="font-light">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-          ea odit neque atque ducimus voluptatum tenetur ipsa magni. Quas sed
-          esse dolorem quasi, voluptatem facilis at, iusto molestiae optio
-          soluta, nemo modi labore sequi. Veniam saepe eos porro. Ex reiciendis
-          commodi accusantium ipsum! Aliquam labore dolore magnam sint quas
-          expedita ipsam! Recusandae, numquam facere aliquam unde, pariatur
-          distinctio nobis quod consequuntur laborum esse molestiae id ipsum
-          excepturi ipsa ad mollitia consectetur beatae! Assumenda, ad cum.
-          Quaerat asperiores deserunt iusto reiciendis earum! Natus rem,
-          accusantium sapiente perspiciatis adipisci, soluta reprehenderit,
-          porro delectus impedit aperiam alias nostrum quas neque error. Enim,
-          nam.
-        </p>
-      </section>
-      <section id="test" className="mx-auto max-w-prose pt-[10vh]">
-        <h1 className="pb-4 text-xl font-bold">Section</h1>
-        <p className="font-light">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-          ea odit neque atque ducimus voluptatum tenetur ipsa magni. Quas sed
-          esse dolorem quasi, voluptatem facilis at, iusto molestiae optio
-          soluta, nemo modi labore sequi. Veniam saepe eos porro. Ex reiciendis
-          commodi accusantium ipsum! Aliquam labore dolore magnam sint quas
-          expedita ipsam! Recusandae, numquam facere aliquam unde, pariatur
-          distinctio nobis quod consequuntur laborum esse molestiae id ipsum
-          excepturi ipsa ad mollitia consectetur beatae! Assumenda, ad cum.
-          Quaerat asperiores deserunt iusto reiciendis earum! Natus rem,
-          accusantium sapiente perspiciatis adipisci, soluta reprehenderit,
-          porro delectus impedit aperiam alias nostrum quas neque error. Enim,
-          nam.
-        </p>
-      </section>
-    </div>
+    <>
+      {/* <RefreshRouteOnSave /> */}
+      <div className="container mx-auto min-h-screen px-4 py-[7vh] pb-[15vh]">
+        <div className="prose dark:prose-invert mx-auto max-w-prose space-y-10 text-sm">
+          <RichText data={content} />
+        </div>
+      </div>
+    </>
   );
 }

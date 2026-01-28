@@ -1,8 +1,8 @@
-import { postgresAdapter } from "@payloadcms/db-postgres";
-import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
+// import { postgresAdapter } from "@payloadcms/db-postgres";
+// import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
+import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { de } from "@payloadcms/translations/languages/de";
 import { en } from "@payloadcms/translations/languages/en";
 import path from "path";
@@ -15,6 +15,7 @@ import { Media } from "./collections/Media";
 import { Users } from "./collections/Users";
 import { Impressum } from "./globals/Impressum";
 import { Privacy } from "./globals/Privacy";
+import { Homepage } from "./globals/Homepage";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -51,7 +52,7 @@ export default buildConfig({
   },
 
   collections: [Users, Media, Images],
-  globals: [Impressum, Privacy],
+  globals: [Homepage, Impressum, Privacy],
 
   editor: lexicalEditor(), // Choose your editor when modifying rich text data content
   secret: process.env.PAYLOAD_SECRET || "",
@@ -60,9 +61,9 @@ export default buildConfig({
   },
 
   // Setup db
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI || "",
+  db: sqliteAdapter({
+    client: {
+      url: process.env.DATABASE_URI || "",
     },
   }),
 
@@ -70,22 +71,20 @@ export default buildConfig({
 
   // Add extra plugins from payloadcms or community built
   plugins: [
-    payloadCloudPlugin(),
-    vercelBlobStorage({
-      enabled: true, // Optional, defaults to true
-      // Specify which collections should use Vercel Blob
-      collections: {
-        // manuals: {
-        //   prefix: "manual-battery-charger/manuals",
-        // },
-        images: {
-          prefix: "dev-app/images", // Creates nice subfolders in blob storage for the images collection
-        },
-      },
-      clientUploads: true, // Critical to circumvent upload file size limits on vercel (4 mb?)
-
-      token: process.env.BLOB_READ_WRITE_TOKEN, // Token provided by Vercel once Blob storage is added to your Vercel project
-    }),
+    // vercelBlobStorage({
+    //   enabled: true, // Optional, defaults to true
+    //   // Specify which collections should use Vercel Blob
+    //   collections: {
+    //     // manuals: {
+    //     //   prefix: "manual-battery-charger/manuals",
+    //     // },
+    //     images: {
+    //       prefix: "dev-app/images", // Creates nice subfolders in blob storage for the images collection
+    //     },
+    //   },
+    //   clientUploads: true, // Critical to circumvent upload file size limits on vercel (4 mb?)
+    //   token: process.env.BLOB_READ_WRITE_TOKEN, // Token provided by Vercel once Blob storage is added to your Vercel project
+    // }),
 
     seoPlugin({
       tabbedUI: true,

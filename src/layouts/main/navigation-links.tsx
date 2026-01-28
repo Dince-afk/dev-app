@@ -6,9 +6,8 @@ import { usePathname } from "next/navigation";
 import { HTMLProps } from "react";
 
 const navigationLinks = [
-  { name: "Home", href: "/" },
-  { name: "Components", href: "/components" },
-  { name: "Test Page", href: "/test" },
+  { name: "Homepage", href: "/" },
+  { name: "Impressum", href: "impressum" },
 ];
 
 interface NavigationLinksProps extends HTMLProps<HTMLElement> {

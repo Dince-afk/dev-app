@@ -1,0 +1,32 @@
+import { revalidatePath } from "next/cache";
+import { GlobalConfig } from "payload";
+
+export const Homepage: GlobalConfig = {
+  slug: "homepage",
+  label: {
+    de: "Homepage",
+    en: "Imprint",
+  },
+  versions: {
+    drafts: {
+      autosave: false,
+    },
+  },
+  hooks: {
+    afterChange: [
+      () => {
+        revalidatePath("/(app)/[lang]/(main)/homepage", "page");
+      },
+    ],
+  },
+  admin: {
+    preview: (_, { locale }) => `/${locale}/homepage`,
+    livePreview: {
+      url: ({ locale }) => {
+        const pageUrl = `/${locale}/homepage`;
+        return `${process.env.NEXT_PUBLIC_SERVER_URL}/api/draft?secret=${process.env.PAYLOAD_SECRET}&redirectPath=${pageUrl}`;
+      },
+    },
+  },
+  fields: [{ name: "content", type: "richText", localized: true }],
+};
