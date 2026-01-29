@@ -4,7 +4,7 @@ on:
     branches: ["main"] 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: "dince-afk/dev-app-vite"
+  IMAGE_NAME: "dince-afk/dev-app-next"
 
 jobs:
   build-and-deploy:

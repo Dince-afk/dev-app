@@ -30,9 +30,6 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED=1
 
 
-ENV PAYLOAD_SECRET=build_dummy_secret_123
-ENV DATABASE_URI=file:./build_dummy.db
-
 RUN \
     if [ -f yarn.lock ]; then yarn run build; \
     elif [ -f package-lock.json ]; then npm run build; \
