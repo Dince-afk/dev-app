@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "check-types": "tsc --noEmit --incremental false",
-    "build": "next build --turbopack",
+    "build": "next build",
     "pre-push": "npm run check-types && npm run build",
     "start": "next start",
     "lint": "eslint",
@@ -13,14 +13,11 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
-    "@payloadcms/db-postgres": "^3.59.1",
     "@payloadcms/db-sqlite": "^3.59.1",
     "@payloadcms/live-preview-react": "^3.59.1",
     "@payloadcms/next": "^3.59.1",
-    "@payloadcms/payload-cloud": "^3.59.1",
     "@payloadcms/plugin-seo": "^3.59.1",
     "@payloadcms/richtext-lexical": "^3.59.1",
-    "@payloadcms/storage-vercel-blob": "^3.59.1",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
