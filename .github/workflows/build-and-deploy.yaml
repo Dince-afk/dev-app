@@ -28,6 +28,3 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          build-args: |
-                      PAYLOAD_SECRET=build_dummy_secret_123
-                      DATABASE_URI=file:./build.db

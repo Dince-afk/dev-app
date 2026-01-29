@@ -29,11 +29,9 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
-ARG PAYLOAD_SECRET
-ARG DATABASE_URI
 
-ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
-ENV DATABASE_URI=$DATABASE_URI
+ENV PAYLOAD_SECRET=build_dummy_secret_123
+ENV DATABASE_URI=file:./build_dummy.db
 
 RUN \
     if [ -f yarn.lock ]; then yarn run build; \
