@@ -1,0 +1,11 @@
+name: "dev-app-next"
+
+services:
+  dev-app-next:
+    image: dince-afk/dev-app-next:latest
+    networks:
+      - caddy_network
+networks:
+  caddy_network:
+    name: caddy_network
+    external: true
