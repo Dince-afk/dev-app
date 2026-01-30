@@ -13,16 +13,16 @@ export const Images: CollectionConfig = {
         name: "thumbnail",
         width: 300,
         position: "centre",
-        // formatOptions: { format: "webp" }, // Error?
+        formatOptions: { format: "webp" }, // Error?
       },
     ],
     adminThumbnail: "thumbnail",
     mimeTypes: ["image/*"],
-    // formatOptions: {
-    //   options: { quality: 85 },
-    //   format: "webp",
-    // },
-    resizeOptions: { width: 4000, withoutEnlargement: true }, // 4K displays have 3840px
+    formatOptions: {
+      options: { quality: 85 },
+      format: "webp",
+    },
+    resizeOptions: { width: 3000, withoutEnlargement: true }, // 4K displays have 3840px
   },
   fields: [
     {
