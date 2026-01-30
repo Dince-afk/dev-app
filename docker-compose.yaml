@@ -11,4 +11,5 @@ services:
       - .env
     volumes:
       - ./payload.db:/app/payload.db
+      - ./images:/app/images
     restart: unless-stopped

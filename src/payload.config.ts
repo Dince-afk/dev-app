@@ -14,6 +14,7 @@ import { Users } from "./collections/Users";
 import { Impressum } from "./globals/Impressum";
 import { Privacy } from "./globals/Privacy";
 import { Homepage } from "./globals/Homepage";
+import { migrations } from "./migrations";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -63,6 +64,7 @@ export default buildConfig({
     client: {
       url: process.env.DATABASE_URI || "",
     },
+    prodMigrations: migrations,
   }),
 
   sharp,
