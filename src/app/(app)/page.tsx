@@ -1,31 +1,29 @@
-import React from "react";
 import { getPayload } from "payload";
 import config from "@payload-config";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 export const dynamic = "force-dynamic";
-// // import { RefreshRouteOnSave } from "@/components/refresh-route-on-save";
+// import { RefreshRouteOnSave } from "@/components/refresh-route-on-save";
 // import { draftMode } from "next/headers";
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ lang: string }>;
-// }) {
-//   let { lang } = await params;
-//   if (!lang || lang !== "de") lang = "en"; // default to en for all other lang params (hr, fr, es, ...)
-//   const payload = await getPayload({ config });
-//   const t = await payload.findGlobal({
-//     slug: "impressum",
-//     locale: (lang as "en") || "de",
-//   });
-
-//   return {
-//     title: t.meta?.title,
-//     description: t.meta?.description,
-//   };
-// }
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  let { lang } = await params;
+  if (!lang || lang !== "de") lang = "de"; // default to en for all other lang params (hr, fr, es, ...)
+  const payload = await getPayload({ config });
+  const t = await payload.findGlobal({
+    slug: "homepage",
+    locale: (lang as "en") || "de",
+  });
+  return {
+    title: t.meta?.title,
+    description: t.meta?.description,
+  };
+}
 
 // export async function generateStaticParams() {
 //   const payload = await getPayload({ config });
@@ -63,7 +61,7 @@ export default async function Page({
     <>
       {/* <RefreshRouteOnSave /> */}
       <div className="container mx-auto min-h-screen px-4 py-[7vh] pb-[15vh]">
-        <div className="prose dark:prose-invert mx-auto max-w-prose space-y-10 text-sm">
+        <div className="prose dark:prose-invert mx-auto space-y-10">
           <RichText data={content} />
         </div>
       </div>

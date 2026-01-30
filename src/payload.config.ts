@@ -1,5 +1,3 @@
-// import { postgresAdapter } from "@payloadcms/db-postgres";
-// import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
@@ -89,12 +87,12 @@ export default buildConfig({
     seoPlugin({
       tabbedUI: true,
       collections: [],
-      globals: ["impressum", "privacy"],
+      globals: ["impressum", "privacy", "homepage"],
       uploadsCollection: "images",
-      generateURL: ({ locale, globalSlug }) =>
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/${locale}/${globalSlug}`,
-      // generateTitle: ({ doc }) =>
-      //   `${doc.title} — Batterieladegerät Bedienungsanleitung`,
+      generateURL: ({ locale }) =>
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/${locale}`,
+      //   generateTitle: ({ globalSlug }) =>
+      //     `${globalSlug} — Batterieladegerät Bedienungsanleitung`,
     }),
   ],
 });

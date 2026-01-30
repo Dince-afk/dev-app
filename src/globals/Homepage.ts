@@ -7,11 +7,11 @@ export const Homepage: GlobalConfig = {
     de: "Homepage",
     en: "Imprint",
   },
-  versions: {
-    drafts: {
-      autosave: false,
-    },
-  },
+  // versions: {
+  //   drafts: {
+  //     autosave: false,
+  //   },
+  // },
   hooks: {
     afterChange: [
       () => {
@@ -21,12 +21,13 @@ export const Homepage: GlobalConfig = {
   },
   admin: {
     preview: (_, { locale }) => `/${locale}/homepage`,
-    livePreview: {
-      url: ({ locale }) => {
-        const pageUrl = `/${locale}/homepage`;
-        return `${process.env.NEXT_PUBLIC_SERVER_URL}/api/draft?secret=${process.env.PAYLOAD_SECRET}&redirectPath=${pageUrl}`;
-      },
-    },
+    // livePreview: {
+    //   url: ({ locale }) => {
+    //     const pageUrl = `/${locale}/homepage`;
+    //     return `${process.env.NEXT_PUBLIC_SERVER_URL}/api/draft?secret=${process.env.PAYLOAD_SECRET}&redirectPath=${pageUrl}`;
+    //   },
+    // },
+    // livePreview: { url: "/" },
   },
   fields: [{ name: "content", type: "richText", localized: true }],
 };

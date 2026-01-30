@@ -1,6 +1,7 @@
 {
   "name": "dev-app",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "check-types": "tsc --noEmit --incremental false",
