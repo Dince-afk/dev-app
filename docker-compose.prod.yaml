@@ -1,0 +1,13 @@
+# Production overrides for VPS deployment
+# Use: docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
+
+services:
+  dev-app-next:
+    networks:
+      - caddy_network
+    ports:
+      - 3000
+networks:
+  caddy_network:
+    name: caddy_network
+    external: true

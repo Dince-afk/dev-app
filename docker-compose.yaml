@@ -1,11 +1,14 @@
+# Base configuration - shared between all environments
+# This file is committed to git
+
 name: "dev-app-next"
 
 services:
   dev-app-next:
-    image: dince-afk/dev-app-next:latest
-    networks:
-      - caddy_network
-networks:
-  caddy_network:
-    name: caddy_network
-    external: true
+    image: ghcr.io/dince-afk/dev-app-next:latest
+    user: root # Required for write access to mounted SQLite database
+    env_file:
+      - .env
+    volumes:
+      - ./payload.db:/app/payload.db
+    restart: unless-stopped
