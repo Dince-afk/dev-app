@@ -1,14 +1,15 @@
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { s3Storage } from "@payloadcms/storage-s3";
+import { resendAdapter } from "@payloadcms/email-resend";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { de } from "@payloadcms/translations/languages/de";
 import { en } from "@payloadcms/translations/languages/en";
 import path from "path";
-import { buildConfig } from "payload";
-
 import sharp from "sharp";
 import { fileURLToPath } from "url";
+
+import { buildConfig } from "payload";
 import { Images } from "./collections/Images";
 import { Media } from "./collections/Media";
 import { Users } from "./collections/Users";
@@ -20,14 +21,13 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
-  i18n: { supportedLanguages: { de, en } }, // The language displayed in all of the /admin page
-  localization: { defaultLocale: "de", locales: ["de", "en"] }, // The localization our data can be in
+  i18n: { supportedLanguages: { de, en } }, // UI language
+  localization: { defaultLocale: "de", locales: ["de", "en"] }, // Data languages
   admin: {
     meta: {
       titleSuffix: " - Admin", // A suffix behind every path and sub path under /admin
     },
     dateFormat: "HH:mm:ss, do MMM yyy", // Anytime dates will be shown in the /admin site it will use this format
-
     user: Users.slug, // Define the main user collection
     importMap: {
       baseDir: path.resolve(dirname),
@@ -42,9 +42,8 @@ export default buildConfig({
           }
         : false,
     avatar: "default", // Nicer looking avatar icon
-
-    // Add custom components to /admin sites
     components: {
+      // Custom admin panel components
       beforeDashboard: ["@/components/payload/before-dashboard"],
       actions: ["@/components/payload/actions"],
       graphics: {
@@ -60,18 +59,19 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URL,
     },
   }),
-
   collections: [Users, Media, Images],
   globals: [Homepage, Impressum, Privacy],
-
-  editor: lexicalEditor(), // Choose your editor when modifying rich text data content
+  email: resendAdapter({
+    defaultFromAddress: "admin@dihub.dev",
+    defaultFromName: "Admin CMS",
+    apiKey: process.env.RESEND_API_KEY || "",
+  }),
+  editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
-
   sharp,
-
   // Add extra plugins from payloadcms or community built
   plugins: [
     s3Storage({
@@ -89,21 +89,6 @@ export default buildConfig({
         endpoint: process.env.S3_ENDPOINT,
       },
     }),
-    // vercelBlobStorage({
-    //   enabled: true, // Optional, defaults to true
-    //   // Specify which collections should use Vercel Blob
-    //   collections: {
-    //     // manuals: {
-    //     //   prefix: "manual-battery-charger/manuals",
-    //     // },
-    //     images: {
-    //       prefix: "dev-app/images", // Creates nice subfolders in blob storage for the images collection
-    //     },
-    //   },
-    //   clientUploads: true, // Critical to circumvent upload file size limits on vercel (4 mb?)
-    //   token: process.env.BLOB_READ_WRITE_TOKEN, // Token provided by Vercel once Blob storage is added to your Vercel project
-    // }),
-
     seoPlugin({
       tabbedUI: true,
       collections: [],
@@ -111,8 +96,6 @@ export default buildConfig({
       uploadsCollection: "images",
       generateURL: ({ locale }) =>
         `${process.env.NEXT_PUBLIC_SERVER_URL}/${locale}`,
-      //   generateTitle: ({ globalSlug }) =>
-      //     `${globalSlug} — Batterieladegerät Bedienungsanleitung`,
     }),
   ],
 });

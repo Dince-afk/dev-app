@@ -1,10 +1,8 @@
-import React from "react";
 import { getPayload } from "payload";
 import config from "@payload-config";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
-export const dynamic = "force-dynamic";
 // // import { RefreshRouteOnSave } from "@/components/refresh-route-on-save";
 // import { draftMode } from "next/headers";
 
