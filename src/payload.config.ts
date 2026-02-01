@@ -1,20 +1,20 @@
-import { sqliteAdapter } from "@payloadcms/db-sqlite";
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import { s3Storage } from "@payloadcms/storage-s3";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { de } from "@payloadcms/translations/languages/de";
 import { en } from "@payloadcms/translations/languages/en";
 import path from "path";
 import { buildConfig } from "payload";
+
 import sharp from "sharp";
 import { fileURLToPath } from "url";
-
 import { Images } from "./collections/Images";
 import { Media } from "./collections/Media";
 import { Users } from "./collections/Users";
 import { Impressum } from "./globals/Impressum";
 import { Privacy } from "./globals/Privacy";
 import { Homepage } from "./globals/Homepage";
-import { migrations } from "./migrations";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -49,6 +49,13 @@ export default buildConfig({
       actions: ["@/components/admin/actions"],
     },
   },
+  db: postgresAdapter({
+    // Postgres-specific arguments go here.
+    // `pool` is required.
+    pool: {
+      connectionString: process.env.DATABASE_URL,
+    },
+  }),
 
   collections: [Users, Media, Images],
   globals: [Homepage, Impressum, Privacy],
@@ -59,18 +66,25 @@ export default buildConfig({
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
 
-  // Setup db
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || "",
-    },
-    prodMigrations: migrations,
-  }),
-
   sharp,
 
   // Add extra plugins from payloadcms or community built
   plugins: [
+    s3Storage({
+      bucket: process.env.S3_BUCKET || "",
+      collections: {
+        media: true,
+        images: true,
+      },
+      config: {
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || "",
+        },
+        region: "auto",
+        endpoint: process.env.S3_ENDPOINT,
+      },
+    }),
     // vercelBlobStorage({
     //   enabled: true, // Optional, defaults to true
     //   // Specify which collections should use Vercel Blob
