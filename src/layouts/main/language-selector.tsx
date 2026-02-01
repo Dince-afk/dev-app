@@ -45,7 +45,7 @@ export default function LanguageSelector({
       >
         <SelectValue>
           <ReactCountryFlag
-            className="size-8 grayscale-50"
+            className="grayscale-0"
             countryCode={currentLangData?.countryIsoCode || "GB"}
             svg
             alt={`${currentLangData?.countryIsoCode} country flag icon`}

@@ -15,6 +15,11 @@ const languageData = [
     languageNativeName: "Deutsch",
   },
   {
+    countryIsoCode: "GB",
+    languageIsoCode: "en",
+    languageNativeName: "English",
+  },
+  {
     countryIsoCode: "BA",
     languageIsoCode: "ba",
     languageNativeName: "Bosanski",
