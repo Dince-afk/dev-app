@@ -45,14 +45,14 @@ export default function LanguageSelector({
       >
         <SelectValue>
           <ReactCountryFlag
-            className="mr-1 size-8 grayscale-25"
+            className="size-8 grayscale-50"
             countryCode={currentLangData?.countryIsoCode || "GB"}
             svg
             alt={`${currentLangData?.countryIsoCode} country flag icon`}
           />
-          <span className="">
+          {/* <span className="">
             {currentLangData?.languageNativeName || "English"}
-          </span>
+          </span> */}
         </SelectValue>
       </SelectTrigger>
       <SelectContent className="" onCloseAutoFocus={(e) => e.preventDefault()}>
@@ -67,7 +67,9 @@ export default function LanguageSelector({
               className="mr-1 aspect-square grayscale-25"
               aria-hidden="true"
             />
-            <span className="">{lang.languageNativeName || "English"}</span>
+            <span className="text-xs">
+              {lang.languageNativeName || "English"}
+            </span>
           </SelectItem>
         ))}
       </SelectContent>

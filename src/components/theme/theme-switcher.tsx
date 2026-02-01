@@ -29,7 +29,7 @@ export function ThemeSwitcher(props: HTMLProps<HTMLDivElement>) {
           onClick={() => setTheme("light")}
           aria-label="Switch to light theme"
         >
-          <Sun className="" size="18" />
+          <Sun className="" size="14" />
         </button>
         <button
           className={cn(
@@ -39,7 +39,7 @@ export function ThemeSwitcher(props: HTMLProps<HTMLDivElement>) {
           onClick={() => setTheme("dark")}
           aria-label="Switch to dark theme"
         >
-          <Moon className="" size="18" />
+          <Moon className="" size="14" />
         </button>
         <button
           className={cn(
@@ -49,7 +49,7 @@ export function ThemeSwitcher(props: HTMLProps<HTMLDivElement>) {
           onClick={() => setTheme("system")}
           aria-label="Switch to system theme"
         >
-          <Monitor size="18" />
+          <Monitor size="14" />
         </button>
       </div>
     </div>

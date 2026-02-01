@@ -26,8 +26,10 @@ import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c08
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { default as default_2821aabe5f92950b4e507e65422389f5 } from '@/components/admin/actions'
-import { default as default_3d446fa626c1d8b11f1deafb5a5d4b84 } from '@/components/admin/before-dashboard'
+import { default as default_d6802d091e9d5a58f7ebb22157124417 } from '@/components/payload/icon'
+import { default as default_19ec836e8ed30c87bf0fa4cc1ab91398 } from '@/components/payload/logo'
+import { default as default_a2010d3485bfb2262e35b9059d1504ea } from '@/components/payload/actions'
+import { default as default_0e6988ee31c6b8428de94d3a74aa19ba } from '@/components/payload/before-dashboard'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
@@ -60,8 +62,10 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@/components/admin/actions#default": default_2821aabe5f92950b4e507e65422389f5,
-  "@/components/admin/before-dashboard#default": default_3d446fa626c1d8b11f1deafb5a5d4b84,
+  "@/components/payload/icon#default": default_d6802d091e9d5a58f7ebb22157124417,
+  "@/components/payload/logo#default": default_19ec836e8ed30c87bf0fa4cc1ab91398,
+  "@/components/payload/actions#default": default_a2010d3485bfb2262e35b9059d1504ea,
+  "@/components/payload/before-dashboard#default": default_0e6988ee31c6b8428de94d3a74aa19ba,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

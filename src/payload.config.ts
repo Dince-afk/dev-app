@@ -45,8 +45,12 @@ export default buildConfig({
 
     // Add custom components to /admin sites
     components: {
-      beforeDashboard: ["@/components/admin/before-dashboard"],
-      actions: ["@/components/admin/actions"],
+      beforeDashboard: ["@/components/payload/before-dashboard"],
+      actions: ["@/components/payload/actions"],
+      graphics: {
+        Logo: "@/components/payload/logo",
+        Icon: "@/components/payload/icon",
+      },
     },
   },
   db: postgresAdapter({

@@ -60,7 +60,7 @@ export default async function Page({
   return (
     <>
       {/* <RefreshRouteOnSave /> */}
-      <div className="container mx-auto min-h-screen px-4 py-[7vh] pb-[15vh]">
+      <div className="container mx-auto min-h-screen px-4 py-[15vh] pb-[15vh]">
         <div className="prose dark:prose-invert mx-auto space-y-10">
           <RichText data={content} />
         </div>
