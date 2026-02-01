@@ -56,7 +56,7 @@ export default async function Page({
     // draft: isEnabled,
   });
   const content = t.content as SerializedEditorState;
-
+  console.log(await fetch("https://api.sampleapis.com/coffee/hot"));
   return (
     <>
       {/* <RefreshRouteOnSave /> */}
