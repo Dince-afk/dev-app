@@ -8,15 +8,15 @@ export const Images: CollectionConfig = {
     plural: { de: "Bilder", en: "Images" },
   },
   upload: {
-    imageSizes: [
-      {
-        name: "thumbnail",
-        width: 300,
-        position: "centre",
-        formatOptions: { format: "webp" }, // Error?
-      },
-    ],
-    adminThumbnail: "thumbnail",
+    // imageSizes: [
+    //   {
+    //     name: "thumbnail",
+    //     width: 300,
+    //     position: "centre",
+    //     formatOptions: { format: "webp" }, // Error?
+    //   },
+    // ],
+    // adminThumbnail: "thumbnail",
     mimeTypes: ["image/*"],
     formatOptions: {
       options: { quality: 85 },
