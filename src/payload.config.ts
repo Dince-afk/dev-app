@@ -11,7 +11,6 @@ import { fileURLToPath } from "url";
 
 import { buildConfig } from "payload";
 import { Images } from "./collections/Images";
-import { Media } from "./collections/Media";
 import { Users } from "./collections/Users";
 import { Impressum } from "./globals/Impressum";
 import { Privacy } from "./globals/Privacy";
@@ -59,7 +58,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URL,
     },
   }),
-  collections: [Users, Media, Images],
+  collections: [Users, Images],
   globals: [Homepage, Impressum, Privacy],
   email: resendAdapter({
     defaultFromAddress: "admin@dihub.dev",
@@ -76,9 +75,13 @@ export default buildConfig({
   plugins: [
     s3Storage({
       bucket: process.env.S3_BUCKET || "",
+      clientUploads: true,
       collections: {
-        media: true,
-        images: true,
+        images: {
+          generateFileURL: ({ filename }) => {
+            return `https://media.vakuf.info/${filename}`;
+          },
+        },
       },
       config: {
         credentials: {
