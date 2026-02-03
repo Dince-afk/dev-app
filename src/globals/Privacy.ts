@@ -3,6 +3,10 @@ import { GlobalConfig } from "payload";
 
 export const Privacy: GlobalConfig = {
   slug: "privacy",
+  label: {
+    de: "Datenschutzerklärung",
+    en: "Privacy Policy",
+  },
   versions: {
     drafts: {
       autosave: false,
@@ -14,10 +18,6 @@ export const Privacy: GlobalConfig = {
         revalidatePath("/(app)/[lang]/(main)/privacy", "page");
       },
     ],
-  },
-  label: {
-    de: "Datenschutzerklärung",
-    en: "Privacy Policy",
   },
   admin: {
     preview: (_, { locale }) => `/${locale}/privacy`,

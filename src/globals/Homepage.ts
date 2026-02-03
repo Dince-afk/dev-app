@@ -5,7 +5,7 @@ export const Homepage: GlobalConfig = {
   slug: "homepage",
   label: {
     de: "Homepage",
-    en: "Imprint",
+    en: "Homepage",
   },
   // versions: {
   //   drafts: {
