@@ -7,11 +7,6 @@ export const Privacy: GlobalConfig = {
     de: "Datenschutzerklärung",
     en: "Privacy Policy",
   },
-  versions: {
-    drafts: {
-      autosave: false,
-    },
-  },
   hooks: {
     afterChange: [
       () => {
@@ -21,12 +16,6 @@ export const Privacy: GlobalConfig = {
   },
   admin: {
     preview: (_, { locale }) => `/${locale}/privacy`,
-    livePreview: {
-      url: ({ locale }) => {
-        const pageUrl = `/${locale}/privacy`;
-        return `${process.env.NEXT_PUBLIC_SERVER_URL}/api/draft?secret=${process.env.PAYLOAD_SECRET}&redirectPath=${pageUrl}`;
-      },
-    },
   },
   fields: [
     {

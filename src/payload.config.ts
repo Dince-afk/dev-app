@@ -26,7 +26,7 @@ export default buildConfig({
     meta: {
       titleSuffix: " - Admin", // A suffix behind every path and sub path under /admin
     },
-    dateFormat: "do MMM yyy - HH:mm:ss", // Anytime dates will be shown in the /admin site it will use this format
+    dateFormat: "dd MMM yyy - HH:mm:ss", // Anytime dates will be shown in the /admin site it will use this format
     user: Users.slug, // Define the main user collection
     importMap: {
       baseDir: path.resolve(dirname),

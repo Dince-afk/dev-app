@@ -384,7 +384,6 @@ export interface Impressum {
      */
     image?: (number | null) | Image;
   };
-  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -417,7 +416,6 @@ export interface Privacy {
      */
     image?: (number | null) | Image;
   };
-  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -451,7 +449,6 @@ export interface ImpressumSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
-  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -469,7 +466,6 @@ export interface PrivacySelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
-  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

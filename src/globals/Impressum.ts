@@ -7,11 +7,6 @@ export const Impressum: GlobalConfig = {
     de: "Impressum",
     en: "Imprint",
   },
-  versions: {
-    drafts: {
-      autosave: false,
-    },
-  },
   hooks: {
     afterChange: [
       () => {
@@ -21,12 +16,6 @@ export const Impressum: GlobalConfig = {
   },
   admin: {
     preview: (_, { locale }) => `/${locale}/impressum`,
-    livePreview: {
-      url: ({ locale }) => {
-        const pageUrl = `/${locale}/impressum`;
-        return `${process.env.NEXT_PUBLIC_SERVER_URL}/api/draft?secret=${process.env.PAYLOAD_SECRET}&redirectPath=${pageUrl}`;
-      },
-    },
   },
   fields: [{ name: "content", type: "richText", localized: true }],
 };
