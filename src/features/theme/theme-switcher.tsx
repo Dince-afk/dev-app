@@ -9,7 +9,7 @@ export function ThemeSwitcher(props: HTMLProps<HTMLDivElement>) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setMounted(true);
+    setMounted(true); // only once mounted is true are the client/user preference settings loaded
   }, []);
 
   return (

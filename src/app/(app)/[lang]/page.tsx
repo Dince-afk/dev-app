@@ -2,6 +2,7 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
+import LocalizedLink from "@/features/i18n/localized-link";
 
 export const dynamic = "force-dynamic";
 // import { RefreshRouteOnSave } from "@/components/refresh-route-on-save";
@@ -61,6 +62,7 @@ export default async function Page({
     <>
       {/* <RefreshRouteOnSave /> */}
       <div className="container mx-auto min-h-screen px-4 py-[15vh] pb-[15vh]">
+        <LocalizedLink href="/impressum">Impressum</LocalizedLink>
         <div className="prose dark:prose-invert mx-auto space-y-10">
           <RichText data={content} />
         </div>

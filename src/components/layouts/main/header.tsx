@@ -1,30 +1,13 @@
 import { type HTMLProps } from "react";
-import { cn } from "../../lib/utils";
-import Link from "next/link";
-import Logo from "./logo";
+import { cn } from "@/lib/utils";
+
+import Logo from "@/components/ui/logo";
 import NavigationLinks from "./navigation-links";
 import MobileNavigation from "./mobile-navigation";
-import { Separator } from "../../components/ui/separator";
-import LanguageSelector from "./language-selector";
-import { ThemeSwitcher } from "../../components/theme/theme-switcher";
-
-const languageData = [
-  {
-    countryIsoCode: "DE",
-    languageIsoCode: "de",
-    languageNativeName: "Deutsch",
-  },
-  {
-    countryIsoCode: "GB",
-    languageIsoCode: "en",
-    languageNativeName: "English",
-  },
-  {
-    countryIsoCode: "BA",
-    languageIsoCode: "ba",
-    languageNativeName: "Bosanski",
-  },
-];
+import { Separator } from "@/components/ui/separator";
+import LanguageSelector from "@/features/i18n/language-selector";
+import { ThemeSwitcher } from "@/features/theme/theme-switcher";
+import LocalizedLink from "@/features/i18n/localized-link";
 
 export default function Header(props: HTMLProps<HTMLElement>) {
   return (
@@ -37,9 +20,9 @@ export default function Header(props: HTMLProps<HTMLElement>) {
       )}
     >
       <div className="container mx-auto flex items-center justify-between gap-10">
-        <Link href="/">
+        <LocalizedLink href="/">
           <Logo className="h-8" />
-        </Link>
+        </LocalizedLink>
 
         {/* Mobile */}
         <MobileNavigation className="md:hidden">
@@ -51,14 +34,14 @@ export default function Header(props: HTMLProps<HTMLElement>) {
           </div>
           <div className="hover:text-foreground text-muted-foreground flex items-center justify-between py-3 pl-3">
             <span>Language</span>
-            <LanguageSelector languageData={languageData} />
+            <LanguageSelector />
           </div>
         </MobileNavigation>
 
         {/* Desktop */}
         <div className="hidden grow items-center justify-between md:flex">
           <NavigationLinks variant="desktop" />
-          <LanguageSelector languageData={languageData} />
+          <LanguageSelector />
         </div>
       </div>
     </header>

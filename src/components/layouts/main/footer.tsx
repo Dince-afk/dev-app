@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import type { HTMLProps } from "react";
-import { ThemeSwitcher } from "../../components/theme/theme-switcher";
+import { ThemeSwitcher } from "@/features/theme/theme-switcher";
 
 export default function Footer(props: HTMLProps<HTMLElement>) {
   return (

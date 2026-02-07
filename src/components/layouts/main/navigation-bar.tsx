@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HTMLProps, useState } from "react";
-import { ThemeSwitcher } from "../../components/theme/theme-switcher";
-import LanguageSelector from "./language-selector";
-import { Separator } from "../../components/ui/separator";
+import { ThemeSwitcher } from "@/features/theme/theme-switcher";
+import LanguageSelector from "@/features/i18n/language-selector";
+import { Separator } from "@/components/ui/separator";
 
 const navigationLinks = [
   { name: "Home", href: "/" },
