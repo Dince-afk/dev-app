@@ -1,11 +1,10 @@
+import { Geist, Geist_Mono } from "next/font/google";
+
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ConsentPopup } from "@/features/consent";
 import Header from "@/layouts/main/header";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import Footer from "@/layouts/main/footer";
-import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,10 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Dev App",
-  description: "Application used for development purposes",
-};
+// export const metadata: Metadata = {
+//   title: "Dev App",
+//   description: "Application used for development purposes",
+// };
 
 export default function RootLayout({
   children,
@@ -43,16 +42,6 @@ export default function RootLayout({
           <Footer />
           <ConsentPopup />
         </ThemeProvider>
-        <Script
-          defer
-          src="https://umami.admin-gateway.dev/script.js"
-          data-website-id="7a5a3db4-cb0f-4aa6-a464-1561e1a6708e"
-        ></Script>
-        <Script
-          defer
-          data-domain="dev.admin-gateway.dev"
-          src="https://plausible.admin-gateway.dev/js/script.js"
-        ></Script>
       </body>
     </html>
   );
