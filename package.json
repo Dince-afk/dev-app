@@ -13,6 +13,7 @@
     "payload:types": "NODE_OPTIONS='--import tsx' payload generate:types"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.8.1",
     "@hookform/resolvers": "^3.10.0",
     "@payloadcms/db-postgres": "^3.74.0",
     "@payloadcms/email-resend": "^3.74.0",
@@ -58,6 +59,7 @@
     "input-otp": "^1.4.2",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.469.0",
+    "negotiator": "^1.0.0",
     "next": "^16.1.6",
     "next-themes": "^0.4.6",
     "payload": "^3.73.0",
@@ -79,6 +81,7 @@
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.19",
     "@types/js-cookie": "^3.0.6",
+    "@types/negotiator": "^0.6.4",
     "@types/node": "^25.1.0",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
